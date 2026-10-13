@@ -1,0 +1,4 @@
+[deps]
+FeatureDCA = "0be46616-a55f-4e6c-9ab4-0d441a6cea01"
+MultivariateStats = "6f286f6a-111f-5878-ab1e-185364afe411"
+PyPlot = "d330b81b-6aea-500a-939a-2ce795aea3ee"

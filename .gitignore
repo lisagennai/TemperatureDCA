@@ -1,0 +1,38 @@
+# Operating-system and editor files
+.DS_Store
+**/.DS_Store
+*.swp
+*.tmp
+
+# Language caches and local environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.matplotlib-cache/
+
+# Presentation build and validation intermediates
+.presentation-build/
+.codex-finalizer/
+
+# Obsolete broad UniProt exports (the corrected new_full_* inputs are tracked)
+full_hsp70.fasta
+full_jdomain.fasta
+
+# Regenerable HMMER intermediates. Keep only the final compact J-domain cohort.
+data/*
+!data/README.md
+!data/processed_new/
+data/processed_new/*
+!data/processed_new/jdomain/
+data/processed_new/jdomain/*
+!data/processed_new/jdomain/jdomain.aligned.maxgap50.fasta
+!data/processed_new/jdomain/jdomain.metadata.maxgap50.csv
+
+# Models, generated sequences, likelihood matrices, and plots are regenerated.
+results/*
+!results/README.md
+
+# Keep only the latest curated presentation.
+deliverables/*
+!deliverables/jdomain_temperature_featuredca_results_v5.pptx
