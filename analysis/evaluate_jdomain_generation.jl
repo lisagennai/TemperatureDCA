@@ -23,7 +23,7 @@ function parse_args(args)
     options = Dict{String,Any}(
         "model" => DEFAULT_MODEL,
         "fasta" => DEFAULT_FASTA,
-        "output_dir" => DEFAULT_OUTPUT,
+        "output-dir" => DEFAULT_OUTPUT,
         "seed" => 1,
         "pca_points" => 6000,
         "pair_points" => 250000,
@@ -223,7 +223,8 @@ function main(args=ARGS)
     weights, Znatural, L, M, q, annotations = FeatureDCA.read_annotated_fasta(options["fasta"]; remove_dups=false, max_gap_fraction=1.0)
     ids = [first(split(strip(only(annotation)))) for annotation in annotations]
     ids == artifact.sequence_ids || error("Model sequence IDs do not match FASTA order")
-    weights = artifact.weights
+    #weights = artifact.weights
+    weights = ones(length(ids))   # unweighted comparison
     cohort_path = replace(options["model"], r"\.[^.]*$" => ".cohort.csv")
     temperatures = Float64[]
     standardized = Float64[]
@@ -241,7 +242,7 @@ function main(args=ARGS)
     Random.seed!(options["seed"])
     println("Generating one sequence for each of $M temperatures...")
     Zgenerated = FeatureDCA.sample(artifact.network, Y)
-    generated_fasta(joinpath(options["output_dir"], "jdomain.generated.fasta"), Zgenerated, ids, temperatures)
+    generated_fasta(joinpath(options["output_dir"], "$(options["model"])_generated.fasta"), Zgenerated, ids, temperatures)
 
     println("Computing weighted one- and two-point frequencies...")
     fn1, fg1, fn2, fg2, pn, pg = frequency_vectors(Znatural, Zgenerated, weights)
