@@ -27,7 +27,7 @@ function parse_args(args)
         "epsconv" => 1e-5, "maxit" => 1000, "verbose" => true,
     )
     value_args = Set(["--fasta", "--metadata", "--output-dir", "--test-fraction", "--strata",
-        "--grid-min", "--grid-max", "--grid-step", "--seed", "--lambda-h", "--lambda-g", "--lambda-j",
+        "--grid-min", "--grid-max", "--grid-step", "--seed", "--lambda_h", "--lambda_g", "--lambda_j",
                       "--epsconv", "--maxit"])
     i = 1
     while i <= length(args)
@@ -281,7 +281,8 @@ function main(args=ARGS)
     train, test = organism_stratified_split(ids, temperatures, taxonomy_ids, options["test_fraction"], options["strata"], options["seed"])
     Z_train, Z_test = Z[:, train], Z[:, test]
     train_t, test_t = temperatures[train], temperatures[test]
-    weights, _ = FeatureDCA.compute_weights(Z_train, :auto)
+    #weights, _ = FeatureDCA.compute_weights(Z_train, :auto)
+    weights = ones(length(train_t))
     normalized_weights = weights ./ sum(weights)
     temperature_mean = sum(train_t .* normalized_weights)
     temperature_scale = sqrt(sum(((train_t .- temperature_mean) .^ 2) .* normalized_weights))

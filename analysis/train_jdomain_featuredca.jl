@@ -216,6 +216,7 @@ function main(args=ARGS)
         weights, _ = FeatureDCA.compute_weights(Z, :auto)
     end
     weights = ones(length(ids))        # unweighted training
+    @printf("NO WEIGHTS!!!!!!!!")
     Y_raw = [parse(Float64, metadata[id][feature]) for feature in features, id in ids]
     Y, means, scales = weighted_standardize(Y_raw, weights)
 

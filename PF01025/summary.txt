@@ -1,0 +1,15 @@
+sequences=6253
+alignment_length=165
+seed=1
+single_frequency_pearson=0.9969520429
+single_frequency_rmse=0.0098217845
+pair_frequency_pearson=0.9916698170
+pair_frequency_rmse=0.0021078567
+gap_frequency_pearson=0.9993126459
+gap_frequency_rmse=0.0070417751
+pca_pc1_explained=0.0597502179
+pca_pc2_explained=0.0489519835
+natural_pc1_temperature_pearson=-0.0586013852
+natural_pc2_temperature_pearson=0.0511142694
+generated_pc1_temperature_pearson=-0.0380129909
+generated_pc2_temperature_pearson=0.0516400104

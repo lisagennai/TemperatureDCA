@@ -23,7 +23,7 @@ function parse_args(args)
     options = Dict{String,Any}(
         "model" => DEFAULT_MODEL,
         "fasta" => DEFAULT_FASTA,
-        "output-dir" => DEFAULT_OUTPUT,
+        "output_dir" => DEFAULT_OUTPUT,
         "seed" => 1,
         "pca_points" => 6000,
         "pair_points" => 250000,
@@ -32,9 +32,9 @@ function parse_args(args)
     while i <= length(args)
         arg = args[i]
         if arg in ("-h", "--help")
-            println("Usage: julia --project=. analysis/evaluate_jdomain_generation.jl [--model PATH] [--fasta PATH] [--output-dir PATH] [--seed N]")
+            println("Usage: julia --project=. analysis/evaluate_jdomain_generation.jl [--model PATH] [--fasta PATH] [--output_dir PATH] [--seed N]")
             exit(0)
-        elseif arg in ("--model", "--fasta", "--output-dir", "--seed", "--pca-points", "--pair-points")
+        elseif arg in ("--model", "--fasta", "--output_dir", "--seed", "--pca-points", "--pair-points")
             i == length(args) && error("Missing value after $arg")
             key = replace(arg[3:end], "-" => "_")
             value = args[i + 1]
