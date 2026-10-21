@@ -283,6 +283,7 @@ function main(args=ARGS)
     train_t, test_t = temperatures[train], temperatures[test]
     #weights, _ = FeatureDCA.compute_weights(Z_train, :auto)
     weights = ones(length(train_t))
+    @printf("NO WEIGHTS!!!!!!!!!!!!!!!!\n")
     normalized_weights = weights ./ sum(weights)
     temperature_mean = sum(train_t .* normalized_weights)
     temperature_scale = sqrt(sum(((train_t .- temperature_mean) .^ 2) .* normalized_weights))
